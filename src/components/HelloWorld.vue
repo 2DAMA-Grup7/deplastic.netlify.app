@@ -1,13 +1,3 @@
-<script setup>
-import { ref } from "vue";
-
-defineProps({
-  msg: String,
-});
-
-const count = ref(0);
-</script>
-
 <template>
   <v-container fill-height>
     <v-row class="text-center">
@@ -26,4 +16,6 @@ const count = ref(0);
   </v-container>
 </template>
 
-<style scoped></style>
+<script>
+export default {};
+</script>

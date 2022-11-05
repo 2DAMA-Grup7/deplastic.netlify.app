@@ -12,13 +12,6 @@ import * as directives from "vuetify/directives";
 // VueRouter
 import { createRouter, createWebHistory } from "vue-router";
 
-const webFontLoader = await import("webfontloader");
-webFontLoader.load({
-  google: {
-    families: ["Roboto:100,300,400,500,700,900&display=swap"],
-  },
-});
-
 const router = createRouter({
   history: createWebHistory(),
   routes: [

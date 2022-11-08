@@ -3,6 +3,8 @@ const serverless = require("serverless-http");
 const app = express();
 const router = express.Router();
 
+router.post("/token", require("./routes/token"));
+
 router.post("/login", require("./routes/login"));
 
 router.get("/markers", require("./routes/markers"));

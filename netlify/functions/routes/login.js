@@ -1,26 +1,36 @@
 function login(req, res) {
   var database = require("../lib/db");
-
-  function res_send(auth, message) {
-    console.log(message);
-    res.send(JSON.stringify({ auth: auth }));
-  }
+  var jwt = require("jsonwebtoken");
+  let json_send = { auth: false };
 
   database.query(
     `SELECT * FROM Users WHERE email = "${req.body.email}"`,
     (error, data) => {
-      if (data.length > 0) {
-        for (var count = 0; count < data.length; count++) {
-          if (data[count].password == req.body.password) {
-            //req.session.user_id = data[count].user_id;
-            res_send(true, "Successful");
-          } else {
-            res_send(false, "Incorrect Password");
+      if (error) {
+        throw error;
+      } else {
+        if (data.length > 0) {
+          for (var count = 0; count < data.length; count++) {
+            if (
+              data[count].password == req.body.password &&
+              data[count].roles == "admin"
+            ) {
+              user = {
+                id: data[count].USER_ID,
+                email: data[count].email,
+              };
+              let token = jwt.sign({ user }, process.env.my_secret_key);
+              json_send = {
+                token: token,
+              };
+              database.query(
+                `UPDATE Users SET token = "${token}" WHERE USER_ID = "${user.id}"`
+              );
+            }
           }
         }
-      } else {
-        res_send(false, "Incorrect Email Address");
       }
+      res.send(JSON.stringify(json_send));
       res.end();
     }
   );

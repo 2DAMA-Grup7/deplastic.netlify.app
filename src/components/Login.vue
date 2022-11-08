@@ -49,7 +49,9 @@ export default {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          document.cookie = `login_token=${data.token}; SameSite=Strict`;
+          document.cookie = `email=${this.email}; SameSite=Strict`;
+          window.location.href = "/admin";
         });
     },
   },

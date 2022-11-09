@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.post("/token", require("./routes/token"));
 
+router.post("/register", require("./routes/register"));
+
 router.post("/login", require("./routes/login"));
 
 router.get("/markers", require("./routes/markers"));

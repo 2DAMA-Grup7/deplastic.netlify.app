@@ -1,13 +1,32 @@
+
 <template>
-  <v-container fill-height>
-    <v-row class="text-center">
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">Admin Page</h1>
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-layout>
+    <v-app-bar color="green">
+      <img src="../assets/logo.svg" alt="logo" width="60" height="60" />
+      <v-toolbar-title-margin >Deplastic</v-toolbar-title-margin>
+      <v-spacer></v-spacer>
+      <v-avatar color="light-blue lighten-4" location="right" >A</v-avatar>
+    </v-app-bar>
+
+    <v-navigation-drawer floating permanent color="green" >
+      <v-list
+       density="compact"
+       nav
+       color="green"
+     >
+       <v-list-item prepend-icon="mdi-map-marker" title="Markers" value="Markers"></v-list-item>
+       <v-list-item prepend-icon="mdi-account-multiple" title="Users" value="Users"></v-list-item>
+       <v-list-item prepend-icon="mdi-newspaper-variant-multiple-outline" title="News" value="News"></v-list-item>
+       
+     </v-list>
+    </v-navigation-drawer>
+    <v-main>
+      <v-card height="200px"></v-card>
+    </v-main>
+  </v-layout>
 </template>
 
 <script>
 export default {};
 </script>
+

@@ -1,4 +1,5 @@
 <script setup>
+import Admin from "../components/Admin.vue";
 import getCookie from "../functions/getcookies";
 fetch("/.netlify/functions/api/token", {
   method: "POST",
@@ -18,6 +19,8 @@ fetch("/.netlify/functions/api/token", {
   });
 </script>
 
-<template></template>
+<template>
+  <Admin />
+</template>
 
 <style scoped></style>

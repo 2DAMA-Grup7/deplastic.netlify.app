@@ -25,6 +25,12 @@
       >
     </v-card-actions>
   </v-card>
+  <v-snackbar :timeout="3000" v-model="snackbar">
+    <label color="red">ERROR:</label>{{ text }}
+    <template v-slot:actions>
+      <v-btn variant="text" @click="snackbar = false"> Close </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
 <script>
@@ -34,6 +40,8 @@ export default {
       email: "",
       password: "",
       loading: [],
+      snackbar: false,
+      text: `Incorrect password or e-mail`,
     };
   },
   methods: {
@@ -49,9 +57,14 @@ export default {
           return response.json();
         })
         .then((data) => {
-          document.cookie = `login_token=${data.token}; SameSite=Strict`;
-          document.cookie = `email=${this.email}; SameSite=Strict`;
-          window.location.href = "/admin";
+          if (!data.auth) {
+            this.snackbar = true;
+          }
+          if (data.token) {
+            document.cookie = `login_token=${data.token}; SameSite=Strict`;
+            document.cookie = `email=${this.email}; SameSite=Strict`;
+            window.location.href = "/admin";
+          }
         });
     },
   },

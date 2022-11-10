@@ -4,7 +4,7 @@
           <img src="../assets/logo.svg" alt="logo" width="60" height="60" />
           <v-toolbar-title-margin >Deplastic</v-toolbar-title-margin>
           <v-spacer></v-spacer>
-          <v-avatar color="light-blue lighten-4" location="right" >A</v-avatar>
+          <v-avatar color="white" location="right" >A</v-avatar>
         </v-app-bar>
     
         <v-navigation-drawer floating permanent color="green" >

@@ -16,12 +16,43 @@
      >
        <v-list-item prepend-icon="mdi-map-marker" title="Markers" value="Markers"></v-list-item>
        <v-list-item prepend-icon="mdi-account-multiple" title="Users" value="Users"></v-list-item>
-       <v-list-item prepend-icon="mdi-newspaper-variant-multiple-outline" title="News" value="News"></v-list-item>
-       
      </v-list>
     </v-navigation-drawer>
     <v-main>
-      <v-card height="200px"></v-card>
+      <v-card
+    max-width="400"
+    class="mx-auto"
+  >
+      <v-row  >
+
+        <v-col cols="50" >
+          <v-card 
+            color="green"
+            theme="dark"
+          >
+            <v-card-actions >
+              <button >
+                <v-icon>mdi-map-marker</v-icon> <v-card-title  class="text-h5"> x Markers</v-card-title> 
+            </button>
+            </v-card-actions>
+          </v-card>
+        </v-col>  
+        <v-col cols="50" >
+          <v-card 
+            color="green"
+            theme="dark"
+          >
+            <v-card-actions >
+              <button >
+                <v-icon>mdi-account-multiple</v-icon> <v-card-title  class="text-h5"> x Users</v-card-title> 
+            </button>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        
+      </v-row>
+   
+  </v-card>
     </v-main>
   </v-layout>
 </template>

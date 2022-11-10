@@ -13,7 +13,9 @@
            nav
            color="green"
          >
-         <router-link class="button" to="admin/markers">markers</router-link>
+        <v-list-item button onclick="location.replace('/admin/markers')" prepend-icon="mdi-map-marker" title="Markers" value="Markers"></v-list-item>
+        <v-list-item button onclick="location.replace('/admin/users')" prepend-icon="mdi-account-multiple" title="Users" value="Users"></v-list-item>
+        
           
          </v-list>
         </v-navigation-drawer>
@@ -22,8 +24,6 @@
       
     </template>
     <script>
-    function redirectMarkers(){
-      router.push('/admin/markers')
-    }
+
     export default {};
     </script>

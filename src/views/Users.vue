@@ -1,4 +1,5 @@
 <script setup>
+import AdminTemplate from "../components/AdminTemplate.vue";
 import Users from "../components/Users.vue";
 import getCookie from "../functions/getcookies";
 fetch("/.netlify/functions/api/token", {
@@ -21,6 +22,7 @@ fetch("/.netlify/functions/api/token", {
 
 <template>
   <Users />
+  <AdminTemplate/>
 </template>
 
 <style scoped></style>

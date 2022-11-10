@@ -1,5 +1,6 @@
 <script setup>
-import Markers from "../components/Markers.vue";
+import AdminTemplate from "../components/AdminTemplate.vue";
+import MarkersVue from "../components/Markers.vue";
 import getCookie from "../functions/getcookies";
 fetch("/.netlify/functions/api/token", {
   method: "POST",
@@ -20,7 +21,8 @@ fetch("/.netlify/functions/api/token", {
 </script>
 
 <template>
-  <Markers />
+  <AdminTemplate/>
+  <MarkersVue/>
 </template>
 
 <style scoped></style>

@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: "/admin/users",
-    name: "markers",
+    name: "users",
     component: () => import("../views/Users.vue"),
     meta: {
       authRequired: true,

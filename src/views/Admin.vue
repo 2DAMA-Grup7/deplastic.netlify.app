@@ -1,6 +1,7 @@
 <script setup>
-import Admin from "../components/AdminMain.vue";
+import AdminMain from "../components/AdminMain.vue";
 import getCookie from "../functions/getcookies";
+import AdminTemplate from "../components/AdminTemplate.vue";
 fetch("/.netlify/functions/api/token", {
   method: "POST",
   body: JSON.stringify({
@@ -20,7 +21,8 @@ fetch("/.netlify/functions/api/token", {
 </script>
 
 <template>
-  <Admin />
+  <AdminMain />
+  <AdminTemplate/>
 </template>
 
 <style scoped></style>

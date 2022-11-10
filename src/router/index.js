@@ -20,6 +20,22 @@ const routes = [
       authRequired: true,
     },
   },
+  {
+    path: "/admin/markers",
+    name: "markers",
+    component: () => import("../views/Markers.vue"),
+    meta: {
+      authRequired: true,
+    },
+  },
+  {
+    path: "/admin/users",
+    name: "markers",
+    component: () => import("../views/Users.vue"),
+    meta: {
+      authRequired: true,
+    },
+  },
 ];
 
 const router = createRouter({

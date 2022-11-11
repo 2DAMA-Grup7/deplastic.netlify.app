@@ -1,6 +1,6 @@
 <script setup>
 import AdminTemplate from "../components/AdminTemplate.vue";
-import Users from "../components/Users.vue";
+import CreateUsers from "../components/CreateUsers.vue";
 import getCookie from "../functions/getcookies";
 fetch("/.netlify/functions/api/token", {
   method: "POST",
@@ -21,7 +21,7 @@ fetch("/.netlify/functions/api/token", {
 </script>
 
 <template>
-  <Users />
+  <CreateUsers />
   <AdminTemplate/>
 </template>
 

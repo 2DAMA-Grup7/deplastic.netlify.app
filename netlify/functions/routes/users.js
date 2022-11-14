@@ -1,5 +1,3 @@
-var jwt = require("jsonwebtoken");
-
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
@@ -39,6 +37,7 @@ function remove(req, res) {
 
 function post(req, res) {
   var database = require("../lib/db");
+  var jwt = require("jsonwebtoken");
   let json_send = { auth: false };
 
   switch (req.body.type) {

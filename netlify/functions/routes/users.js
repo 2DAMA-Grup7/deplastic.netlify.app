@@ -2,6 +2,8 @@ var database = require("../lib/db");
 var jwt = require("jsonwebtoken");
 
 function put(req, res) {
+  var database = require("../lib/db");
+
   database.query(
     `UPDATE Users username='${req.body.username}',password='${req.body.password}', email='${req.body.newEmail}' WHERE email='${req.body.email}'`,
     function (err, result) {
@@ -16,12 +18,16 @@ function put(req, res) {
 }
 
 function get(req, res) {
+  var database = require("../lib/db");
+
   database.query("SELECT * FROM Users", function (err, result) {
     res.json(result);
   });
 }
 
 function remove(req, res) {
+  var database = require("../lib/db");
+
   database.query(
     `DELETE * FROM Users WHERE id = "${req.body.id}" `,
     function (err) {
@@ -36,10 +42,11 @@ function remove(req, res) {
 }
 
 function post(req, res) {
+  var database = require("../lib/db");
   let json_send = { auth: false };
 
   switch (req.body.type) {
-    case 0: //Login
+    case "login": //Login
       database.query(
         `SELECT * FROM Users WHERE email = "${req.body.email}"`,
         (error, data) => {
@@ -47,7 +54,7 @@ function post(req, res) {
             throw error;
           } else {
             if (data.length > 0) {
-              for (var count = 0; count < data.length; coutn++) {
+              for (var count = 0; count < data.length; count++) {
                 if (data[count].password == req.body.password) {
                   user = {
                     id: data[count].USER_ID,

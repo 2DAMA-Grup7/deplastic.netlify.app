@@ -2,6 +2,7 @@ var database = require("../lib/db");
 var jwt = require("jsonwebtoken");
 
 function put(req, res) {
+  var database = require("../lib/db");
   database.query(
     `UPDATE Users username='${req.body.username}',password='${req.body.password}', email='${req.body.newEmail}' WHERE email='${req.body.email}'`,
     function (err, result) {
@@ -16,12 +17,14 @@ function put(req, res) {
 }
 
 function get(req, res) {
+  var database = require("../lib/db");
   database.query("SELECT * FROM Users", function (err, result) {
     res.json(result);
   });
 }
 
 function remove(req, res) {
+  var database = require("../lib/db");
   database.query(
     `DELETE * FROM Users WHERE id = "${req.body.id}" `,
     function (err) {
@@ -36,6 +39,7 @@ function remove(req, res) {
 }
 
 function post(req, res) {
+  var database = require("../lib/db");
   let json_send = { auth: false };
 
   switch (req.body.type) {

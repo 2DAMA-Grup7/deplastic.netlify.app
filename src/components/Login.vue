@@ -1,9 +1,10 @@
 <template>
-  <v-layout>  <v-app-bar color="green">
+  <v-layout>
+    <v-app-bar color="green">
       <img src="../assets/logo.svg" alt="logo" width="60" height="60" />
-      <v-toolbar-title-margin >Deplastic</v-toolbar-title-margin>
-      
-    </v-app-bar></v-layout>
+      <v-toolbar-title-margin>Deplastic</v-toolbar-title-margin>
+    </v-app-bar></v-layout
+  >
   <v-card class="mx-auto" width="400" variant="outlined" color="green">
     <v-card-text>
       <v-card-text>
@@ -36,7 +37,6 @@
       <v-btn variant="text" @click="snackbar = false"> Close </v-btn>
     </template>
   </v-snackbar>
-  
 </template>
 
 <script>
@@ -54,9 +54,13 @@ export default {
     load(i) {
       this.loading[i] = true;
       setTimeout(() => (this.loading[i] = false), 3000);
-      fetch("/.netlify/functions/api/login", {
+      fetch("/.netlify/functions/api/user", {
         method: "POST",
-        body: JSON.stringify({ email: this.email, password: this.password }),
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+          type: 0,
+        }),
         headers: { "Content-Type": "application/json" },
       })
         .then((response) => {
@@ -65,8 +69,7 @@ export default {
         .then((data) => {
           if (!data.auth) {
             this.snackbar = true;
-          }
-          if (data.token) {
+          } else {
             document.cookie = `login_token=${data.token}; SameSite=Strict`;
             document.cookie = `email=${this.email}; SameSite=Strict`;
             window.location.href = "/admin";

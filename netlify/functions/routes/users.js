@@ -47,7 +47,7 @@ function post(req, res) {
             throw error;
           } else {
             if (data.length > 0) {
-              for (var count = 0; count < data.length; coutn++) {
+              for (var count = 0; count < data.length; count++) {
                 if (data[count].password == req.body.password) {
                   user = {
                     id: data[count].USER_ID,

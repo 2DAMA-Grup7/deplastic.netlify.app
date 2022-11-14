@@ -1,4 +1,3 @@
-var database = require("../lib/db");
 var jwt = require("jsonwebtoken");
 
 function put(req, res) {

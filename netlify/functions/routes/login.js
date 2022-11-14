@@ -21,7 +21,6 @@ function login(req, res) {
               };
               let token = jwt.sign({ user }, process.env.my_secret_key);
               json_send = {
-                auth: true,
                 token: token,
               };
               database.query(

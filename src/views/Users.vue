@@ -1,7 +1,7 @@
 <script setup>
-import AdminMain from "../components/AdminMain.vue";
-import getCookie from "../functions/getcookies";
 import AdminTemplate from "../components/AdminTemplate.vue";
+import CreateUsers from "../components/CreateUsers.vue";
+import getCookie from "../functions/getcookies";
 fetch("/.netlify/functions/api/token", {
   method: "POST",
   body: JSON.stringify({
@@ -21,7 +21,7 @@ fetch("/.netlify/functions/api/token", {
 </script>
 
 <template>
-  <AdminMain />
+  <CreateUsers />
   <AdminTemplate/>
 </template>
 

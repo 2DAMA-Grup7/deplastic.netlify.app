@@ -1,5 +1,10 @@
 <template>
-  <v-card class="mx-auto" width="400" variant="outlined">
+  <v-layout>  <v-app-bar color="green">
+      <img src="../assets/logo.svg" alt="logo" width="60" height="60" />
+      <v-toolbar-title-margin >Deplastic</v-toolbar-title-margin>
+      
+    </v-app-bar></v-layout>
+  <v-card class="mx-auto" width="400" variant="outlined" color="green">
     <v-card-text>
       <v-card-text>
         <v-form>
@@ -31,6 +36,7 @@
       <v-btn variant="text" @click="snackbar = false"> Close </v-btn>
     </template>
   </v-snackbar>
+  
 </template>
 
 <script>

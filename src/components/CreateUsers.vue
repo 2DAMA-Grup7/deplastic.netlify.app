@@ -13,11 +13,21 @@
     ></v-text-field>
 
     <v-text-field
+      v-model="password"
+      
+      :rules="passwordRules"
+      label="Password"
+      required
+    ></v-text-field>
+
+    <v-text-field
       v-model="email"
       :rules="emailRules"
       label="E-mail"
       required
     ></v-text-field>
+
+    
 
     <v-select
     v-model="role"
@@ -61,29 +71,42 @@
        email: '',
        emailRules: [
          v => !!v || 'E-mail is required',
-         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      //   v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
        ],
        role: '',
        roleRules: [
          v => !!v || 'Role is required',
          v => /User/.test(v) ||/Artist/.test(v)  || 'Role must be valid',
        ],
+       password: '',
+       passwordRules: [
+       v => !!v || 'Password is required',
+       //v => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(v) || 'Password must contain at least lowercase letter, one number, a special character and one uppercase letter',
+      ],
        select: null,
        
        checkbox: false,
      }),
  
      methods: {
-       createuser () {
-         this.$refs.form. fetch("/.netlify/functions/api/users", {
+       createUser () {
+        fetch("/.netlify/functions/api/user", {
         method: "POST",
-        body: JSON.stringify({ email: this.email, password: this.password, role: this.role}),
+        body: JSON.stringify({ 
+
+        username:this.username,
+        password: this.password,
+        email:this.email,
+        role: this.role
+
+      }),
+
         headers: { "Content-Type": "application/json" },
       })
      ,
-      validate () 
+      this.createUser () 
       {
-        const { valid } = this.$refs.form.validate()
+        const { valid } = this.$refs.form.createUser()
 
         if (valid) alert('Form is valid')
       }},

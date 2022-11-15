@@ -7,29 +7,32 @@
       bg-color="green"
       
     >
-      <v-tab value="one" >Add User</v-tab>
-      <v-tab value="two">Edit User</v-tab>
-      <v-tab value="three">Remove User</v-tab>
-      <v-tab value="four">Get User</v-tab>
+    <v-tab value="one">Get User</v-tab>
+      <v-tab value="two" >Add User</v-tab>
+      <v-tab value="three">Edit User</v-tab>
+      <v-tab value="four">Remove User</v-tab>
+      
     </v-tabs>
 
     <v-card-text>
       <v-window v-model="tab">
         <v-window-item value="one">
-        <CreateUsers/>
+        
+        <GetUser/>
 
         </v-window-item>
 
         <v-window-item value="two">
-          Two
+          <CreateUsers/>
         </v-window-item>
 
         <v-window-item value="three">
-          <RemoveUser/>
+          edit
         </v-window-item>
 
         <v-window-item value="four">
-          <GetUser/>
+          <RemoveUser/>
+
         </v-window-item>
 
       </v-window>

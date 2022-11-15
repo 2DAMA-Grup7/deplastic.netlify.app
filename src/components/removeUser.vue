@@ -18,6 +18,13 @@
     >
       Delete
     </v-btn>
+    <v-btn
+      color="error"
+      class="mr-4"
+      @click="reset"
+    >
+      Reset 
+    </v-btn>
      </v-form>
     
     
@@ -29,9 +36,15 @@
        DeleteUser: '',
        idRules:[
        v => !!v || 'ID is required',
-      //somehow add just numbers rule someday V => /5/.test(v) || 'ID must be a number'
+       V =>  /^\d+$/.test(v) || 'ID must be a number'
 
-       ]
+       ],      
+       
+       
+       
+       
+       select: null,
+
 
         }),
         methods: {
@@ -51,6 +64,8 @@
       reset () {
         this.$refs.form.reset()
       }
+      
     }
+    
   }
     </script>

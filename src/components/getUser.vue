@@ -1,6 +1,6 @@
 <template>
-    <div v-for="item in listUsers">
-      {{item.username}}
+    <div v-for="user in listUsers">
+      {{user.username}}
     </div>
   </template>
 

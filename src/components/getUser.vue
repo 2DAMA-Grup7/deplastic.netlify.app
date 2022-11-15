@@ -1,6 +1,6 @@
 <template>
     <div v-for="user in listUsers">
-      {{user.username}}
+      {{user.username,user.roles}}
     </div>
   </template>
 
@@ -14,7 +14,7 @@
     },
     methods: {
       async getData() {
-        const res = await fetch("https://deplastic.netlify.app/.netlify/functions/api/user");
+        const res = await fetch("/.netlify/functions/api/user");
         const finalRes = await res.json();
         this.listUsers = finalRes;
       }

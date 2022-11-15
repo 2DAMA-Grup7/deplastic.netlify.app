@@ -7,9 +7,8 @@ function get(req, res) {
 
 function post(req, res) {
   database.query(
-    `INSERT INTO Markers 
-  VALUES ("${req.body.latitude}", "${req.body.longitude}", "${req.body.name}", "", "${req.body.description}")"`,
-    (err) => {
+    `INSERT INTO Markers (latitude, longitude, name, id) VALUES ('${req.body.latitude}','${req.body.longitude}','${req.body.name}',Null`,
+    function (err, result) {
       if (err) {
         res.send("{ error: true }");
       } else {
@@ -18,7 +17,6 @@ function post(req, res) {
       res.end();
     }
   );
-
 }
 
 function put(req, res) {
@@ -51,4 +49,4 @@ function remove(req, res) {
   );
 }
 
-module.exports = {get, post, remove, put};
+module.exports = { get, post, remove, put };

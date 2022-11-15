@@ -25,6 +25,7 @@ fetch("/.netlify/functions/api/token", {
  
   <AdminTemplate/>
  <UserTabs/>
+
 </template>
 
 <style scoped></style>

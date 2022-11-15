@@ -25,11 +25,11 @@
         </v-window-item>
 
         <v-window-item value="three">
-          Three
+          <RemoveUser/>
         </v-window-item>
 
         <v-window-item value="four">
-          Three
+          <GetUser/>
         </v-window-item>
 
       </v-window>
@@ -40,11 +40,13 @@
     </template>
 <script>
 import CreateUsers from './CreateUsers.vue';
+import GetUser from './getUser.vue';
+import RemoveUser from './removeUser.vue';
 
 export default {
     data: () => ({
         tab: null,
     }),
-    components: { CreateUsers }
+    components: { CreateUsers, RemoveUser, GetUser }
 }
 </script>

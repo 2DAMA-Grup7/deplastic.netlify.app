@@ -75,9 +75,8 @@ function post(req, res) {
 
     case 1: //Register
       database.query(
-        `INSERT INTO Users 
-    VALUES ("", "${req.body.username}", "${req.body.password}", "${req.body.email}", "${req.body.role}", "")"`,
-        (err) => {
+        `INSERT INTO Users (username, password, email, role, USER_ID) VALUES ('${req.body.username}','${req.body.password}','${req.body.email}','${req.body.role}', NULL`,
+        function (err, result) {
           if (err) {
             res.send("{ error: true }");
           } else {

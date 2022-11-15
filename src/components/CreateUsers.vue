@@ -19,10 +19,11 @@
       required
     ></v-text-field>
 
-   
     <v-select
+    v-model="role"
   label="Role"
   :items="['User', 'Artist']"
+  :rules="roleRules"
   required
 ></v-select>
 
@@ -62,6 +63,11 @@
          v => !!v || 'E-mail is required',
          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
        ],
+       role: '',
+       roleRules: [
+         v => !!v || 'Role is required',
+         v => /User/.test(v) ||/Artist/.test(v)  || 'Role must be valid',
+       ],
        select: null,
        
        checkbox: false,
@@ -74,25 +80,16 @@
         body: JSON.stringify({ email: this.email, password: this.password, role: this.role}),
         headers: { "Content-Type": "application/json" },
       })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          if (!data.auth) {
-            this.snackbar = true;
-          }
-          if (data.token) {
-            document.cookie = `login_token=${data.token}; SameSite=Strict`;
-            document.cookie = `email=${this.email}; SameSite=Strict`;
-            window.location.href = "/admin";
-          }
-        });
-       },
-       reset () {
-         this.$refs.form.reset()
-       },
-       
-       
-     },
-   }
+     ,
+      validate () 
+      {
+        const { valid } = this.$refs.form.validate()
+
+        if (valid) alert('Form is valid')
+      }},
+      reset () {
+        this.$refs.form.reset()
+      }
+    }
+  }
  </script>

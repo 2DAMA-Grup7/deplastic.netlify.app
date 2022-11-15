@@ -1,12 +1,12 @@
 <script setup>
+import AdminTemplate from "../components/AdminTemplate.vue";
 import Login from "../components/Login.vue";
 import getCookie from "../functions/getcookies";
-fetch("/.netlify/functions/api/user", {
+fetch("/.netlify/functions/api/token", {
   method: "POST",
   body: JSON.stringify({
     token: getCookie("login_token"),
     email: getCookie("email"),
-    type: 2,
   }),
   headers: { "Content-Type": "application/json" },
 })
@@ -21,7 +21,8 @@ fetch("/.netlify/functions/api/user", {
 </script>
 
 <template>
-  <Login />
+ 
+  <Login/>
 </template>
 
 <style scoped></style>

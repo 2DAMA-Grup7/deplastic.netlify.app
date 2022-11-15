@@ -2,12 +2,11 @@
 import AdminTemplate from "../components/AdminTemplate.vue";
 import MarkersVue from "../components/Markers.vue";
 import getCookie from "../functions/getcookies";
-fetch("/.netlify/functions/api/user", {
+fetch("/.netlify/functions/api/token", {
   method: "POST",
   body: JSON.stringify({
     token: getCookie("login_token"),
     email: getCookie("email"),
-    type: 2,
   }),
   headers: { "Content-Type": "application/json" },
 })

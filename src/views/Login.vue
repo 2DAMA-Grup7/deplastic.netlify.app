@@ -1,11 +1,12 @@
 <script setup>
 import Login from "../components/Login.vue";
 import getCookie from "../functions/getcookies";
-fetch("/.netlify/functions/api/token", {
+fetch("/.netlify/functions/api/user", {
   method: "POST",
   body: JSON.stringify({
     token: getCookie("login_token"),
     email: getCookie("email"),
+    type: 2,
   }),
   headers: { "Content-Type": "application/json" },
 })

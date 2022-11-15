@@ -1,6 +1,7 @@
 <template>
     <div v-for="user in listUsers">
-      {{user.username,user.roles}}
+      {{user.username}},
+      {{user.roles}}
     </div>
   </template>
 

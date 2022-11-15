@@ -12,13 +12,10 @@ router.delete("/user", users.remove);
 
 router.put("/user", users.put);
 
-// TODO
-/*
+/* Deprecated
 router.post("/token", require("./routes/token"));
-
 router.post("/login", require("./routes/login"));
 */
-//
 
 router.get("/markers", require("./routes/markers"));
 

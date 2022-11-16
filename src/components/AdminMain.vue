@@ -15,7 +15,7 @@
             theme="dark"
           >
             <v-card-actions >
-              <button >
+              <button onclick="location.replace('/admin/markers')" >
                 <v-icon>mdi-map-marker</v-icon> <v-card-title  class="text-h5"> x Markers</v-card-title> 
             </button>
             </v-card-actions>
@@ -27,7 +27,7 @@
             theme="dark"
           >
             <v-card-actions >
-              <button >
+              <button onclick="location.replace('/admin/users')">
                 <v-icon>mdi-account-multiple</v-icon> <v-card-title  class="text-h5"> x Users</v-card-title> 
             </button>
             </v-card-actions>

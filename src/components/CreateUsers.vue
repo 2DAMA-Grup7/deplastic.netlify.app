@@ -1,76 +1,118 @@
 <template >
-<div class="py-4">
- 
+  <v-form
+    ref="form"
+    v-model="valid"
+    lazy-validation
+  >
+    <v-text-field
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Name"
+      required
+    ></v-text-field>
 
- <v-card
-   class="mx-auto pa-12 pb-8"
-   elevation="8"
-   max-width="448"
-   rounded="lg"
- >
+    <v-text-field
+      v-model="password"
+      
+      :rules="passwordRules"
+      label="Password"
+      required
+    ></v-text-field>
 
-   <div class="text-subtitle-1 text-medium-emphasis">User</div>
-
-   <v-text-field
-     density="compact"
-     placeholder="Username"
-     prepend-inner-icon="mdi-account"
-     
-     variant="outlined"
-   ></v-text-field>
-
-   <div class="text-subtitle-1 text-medium-emphasis">Email</div>
-
-   <v-text-field
-     density="compact"
-     placeholder="Email address"
-     prepend-inner-icon="mdi-email"
-     variant="outlined"
-   ></v-text-field>
-
-   <div class="text-subtitle-1 text-medium-emphasis ">
-     Password
-   </div>
-
-   <v-text-field
-     :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
-     :type="visible ? 'text' : 'password'"
-     density="compact"
-     placeholder="Enter password"
-     prepend-inner-icon="mdi-lock"
-     variant="outlined"
-     @click:append-inner="visible = !visible"
-   ></v-text-field>
-
-   <v-checkbox label="Artist"></v-checkbox>
-
-   <v-card
-     class="mb-12"
-     color="surface-variant"
-     variant="tonal"
-     width="400"
-           >
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
 
     
-   </v-card>
-  
-   <v-btn
-     block
-     class="mb-8"
-     color="blue"
-     size="large"
-     variant="tonal"
-   >
-     Create user
-   </v-btn>
 
-  
- </v-card>
+    <v-select
+    v-model="role"
+  label="Role"
+  :items="['User', 'Artist']"
+  :rules="roleRules"
+  required
+></v-select>
 
+    <v-btn
+      :disabled="!valid"
+      color="success"
+      class="mr-4"
+      @click="createUser"
+    >
+      Create
+    </v-btn>
+
+    <v-btn
+      color="error"
+      class="mr-4"
+      @click="reset"
+    >
+      Reset Form
+    </v-btn>
+
+   
+  </v-form>
  
- 
-</div>
+
     </template>
-    <script>
-    export default {};
-    </script>
+   <script>
+   export default {
+     data: () => ({
+       valid: true,
+       name: '',
+       nameRules: [
+         v => !!v || 'Name is required',
+         v => (v && v.length <= 20) || 'Name must be less than 20 characters',
+       ],
+       email: '',
+       emailRules: [
+         v => !!v || 'E-mail is required',
+      //   v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+       ],
+       role: '',
+       roleRules: [
+         v => !!v || 'Role is required',
+         v => /User/.test(v) ||/Artist/.test(v)  || 'Role must be valid',
+       ],
+       password: '',
+       passwordRules: [
+       v => !!v || 'Password is required',
+       //v => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(v) || 'Password must contain at least lowercase letter, one number, a special character and one uppercase letter',
+      ],
+       select: null,
+       
+       checkbox: false,
+     }),
+ 
+     methods: {
+       createUser () {
+        fetch("/.netlify/functions/api/user", {
+        method: "POST",
+        body: JSON.stringify({ 
+
+        username:this.username,
+        password: this.password,
+        email:this.email,
+        role: this.role
+
+      }),
+
+        headers: { "Content-Type": "application/json" },
+      })
+     ,
+      this.createUser () 
+      {
+        const { valid } = this.$refs.form.createUser()
+
+        if (valid) alert('Form is valid')
+      }},
+      reset () {
+        this.$refs.form.reset()
+      }
+    }
+  }
+ </script>

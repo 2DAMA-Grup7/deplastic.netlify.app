@@ -57,7 +57,6 @@ export default {
       fetch("/.netlify/functions/api/user", {
         method: "POST",
         body: JSON.stringify({
-          
           email: this.email,
           password: this.password,
           type: 0,

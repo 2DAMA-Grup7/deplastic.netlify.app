@@ -1,8 +1,4 @@
-<template >
-     
-generic to work with delete at the end
-
-</template>
+<template>generic to work with delete at the end</template>
 <script>
 export default {};
 </script>

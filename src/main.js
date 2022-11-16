@@ -11,7 +11,6 @@ import * as directives from "vuetify/directives";
 // VueRouter
 import router from "./router";
 
-const vuetify = createVuetify({ components, directives});
-
+const vuetify = createVuetify({ components, directives });
 
 createApp(App).use(vuetify).use(router).mount("#app");

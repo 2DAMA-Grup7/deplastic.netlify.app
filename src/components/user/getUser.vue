@@ -3,13 +3,13 @@
     <thead>
       <tr>
         <th class="text-left">User ID</th>
+        <th class="text-left">Username</th>
         <th class="text-left">Roles</th>
         <th class="text-left">Email</th>
-        <th class="text-left">Username</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="user in listUsers" :key="user.username">
+      <tr v-for="user in listUsers" :key="user.USER_ID">
         <td class="text-left">{{ user.USER_ID }}</td>
         <td class="text-left">{{ user.username }}</td>
         <td class="text-left">{{ user.roles }}</td>

@@ -1,13 +1,11 @@
 <script setup>
-import AdminMain from "../components/AdminMain.vue";
+import AdminMain from "../components/adminComponent.vue";
 import getCookie from "../functions/getcookies";
-import AdminTemplate from "../components/AdminTemplate.vue";
-fetch("/.netlify/functions/api/user", {
+fetch("/.netlify/functions/api/token", {
   method: "POST",
   body: JSON.stringify({
     token: getCookie("login_token"),
     email: getCookie("email"),
-    type: 2,
   }),
   headers: { "Content-Type": "application/json" },
 })
@@ -23,7 +21,6 @@ fetch("/.netlify/functions/api/user", {
 
 <template>
   <AdminMain />
-  <AdminTemplate />
 </template>
 
 <style scoped></style>

@@ -6,15 +6,17 @@ function get(req, res) {
 }
 
 function post(req, res) {
+  var database = require("../lib/db");
   database.query(
-    `INSERT INTO Markers (latitude, longitude, name, id) VALUES ('${req.body.latitude}','${req.body.longitude}','${req.body.name}',Null`,
+    `INSERT INTO Markers (id_marker, name, latitude, longitude, description) VALUES (NULL, "${req.body.name}","${req.body.latitude}","${req.body.longitude}","${req.body.description}")`,
     function (err, result) {
       if (err) {
-        res.send("{ error: true }");
+        res.send(JSON.stringify({ success: false }));
+        res.end();
       } else {
-        res.send("{ error: false }");
+        res.send(JSON.stringify({ success: true }));
+        res.end();
       }
-      res.end();
     }
   );
 }
@@ -22,12 +24,12 @@ function post(req, res) {
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
-    `UPDATE Users latitude='${req.body.latitude}',longitude='${req.body.longitude}', name='${req.body.name}', descritpion=${req.body.description} WHERE email='${req.body.email}'`,
+    `UPDATE Markers SET latitude='${req.body.latitude}',longitude='${req.body.longitude}', name='${req.body.new_name}', description=${req.body.description} WHERE name='${req.body.name}'`,
     function (err, result) {
       if (err) {
-        res.send("{ error: true }");
+        res.send(JSON.stringify({ success: false }));
       } else {
-        res.send("{ error: false }");
+        res.send(JSON.stringify({ success: true }));
       }
       res.end();
     }
@@ -36,17 +38,14 @@ function put(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(
-    `DELETE * FROM Users WHERE id = "${req.body.name}" `,
-    function (err) {
-      if (err) {
-        res.send("{ error: true }");
-      } else {
-        res.send("{ error: false }");
-      }
-      res.end();
+  database.query(`DELETE FROM Markers WHERE name = "${req.body.name}" `, function (err) {
+    if (err) {
+      res.send(JSON.stringify({ success: false }));
+    } else {
+      res.send(JSON.stringify({ success: true }));
     }
-  );
+    res.end();
+  });
 }
 
 module.exports = { get, post, remove, put };

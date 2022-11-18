@@ -1,14 +1,12 @@
 <script setup>
-import AdminTemplate from "../components/AdminTemplate.vue";
-import CreateUsers from "../components/CreateUsers.vue";
-import UserTabs from "../components/userTabs.vue";
+import AdminTemplate from "../components/adminComponent.vue";
+import UserTabs from "../components/user/userTabs.vue";
 import getCookie from "../functions/getcookies";
-fetch("/.netlify/functions/api/user", {
+fetch("/.netlify/functions/api/token", {
   method: "POST",
   body: JSON.stringify({
     token: getCookie("login_token"),
     email: getCookie("email"),
-    type: 2,
   }),
   headers: { "Content-Type": "application/json" },
 })

@@ -17,7 +17,9 @@
           <CreateUsers />
         </v-window-item>
 
-        <v-window-item value="three"> edit </v-window-item>
+        <v-window-item value="three">
+          <EditUser />
+        </v-window-item>
 
         <v-window-item value="four">
           <RemoveUser />
@@ -30,11 +32,12 @@
 import CreateUsers from "./CreateUsers.vue";
 import GetUser from "./getUser.vue";
 import RemoveUser from "./removeUser.vue";
+import EditUser from "./editUser.vue";
 
 export default {
   data: () => ({
     tab: null,
   }),
-  components: { CreateUsers, RemoveUser, GetUser },
+  components: { CreateUsers, RemoveUser, GetUser, EditUser },
 };
 </script>

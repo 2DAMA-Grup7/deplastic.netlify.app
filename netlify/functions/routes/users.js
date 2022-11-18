@@ -1,12 +1,12 @@
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
-    `UPDATE Users username='${req.body.username}',password='${req.body.password}', email='${req.body.newEmail}' WHERE email='${req.body.email}'`,
+    `UPDATE Users SET username='${req.body.username}',password='${req.body.password}', email='${req.body.newEmail}', roles='${req.body.roles}' WHERE email='${req.body.email}'`,
     function (err, result) {
       if (err) {
-        res.send("{ error: true }");
+        res.send(JSON.stringify({ success: false }));
       } else {
-        res.send("{ error: false }");
+        res.send(JSON.stringify({ success: true }));
       }
       res.end();
     }
@@ -22,104 +22,16 @@ function get(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(
-    `DELETE * FROM Users WHERE id = "${req.body.id}" `,
-    function (err) {
-      if (err) {
-        res.send("{ error: true }");
-      } else {
-        res.send("{ error: false }");
-      }
-      res.end();
+  database.query(`DELETE FROM Users WHERE email = "${req.body.email}" `, function (err) {
+    if (err) {
+      res.send(JSON.stringify({ success: false }));
+    } else {
+      res.send(JSON.stringify({ success: true }));
     }
-  );
+    res.end();
+  });
 }
 
-function post(req, res) {
-  var database = require("../lib/db");
-  var jwt = require("jsonwebtoken");
-  let json_send = { auth: false };
-
-  switch (req.body.type) {
-    case 0: //Login
-      database.query(
-        `SELECT * FROM Users WHERE email = "${req.body.email}"`,
-        (error, data) => {
-          if (error) {
-            throw error;
-          } else {
-            if (data.length > 0) {
-              for (var count = 0; count < data.length; count++) {
-                if (data[count].password == req.body.password) {
-                  user = {
-                    id: data[count].USER_ID,
-                    email: data[count].email,
-                  };
-                  let token = jwt.sign({ user }, process.env.my_secret_key);
-                  json_send = {
-                    auth: true,
-                    token: token,
-                  };
-                  database.query(
-                    `UPDATE Users SET token = "${token}" WHERE USER_ID = "${user.id}"`
-                  );
-                }
-              }
-            }
-          }
-          res.send(JSON.stringify(json_send));
-          res.end();
-        }
-      );
-      break;
-
-    case 1: //Register
-      database.query(
-        `INSERT INTO Users (username, password, email, role, USER_ID) VALUES ('${req.body.username}','${req.body.password}','${req.body.email}','${req.body.role}', NULL`,
-        function (err, result) {
-          if (err) {
-            res.send("{ error: true }");
-          } else {
-            res.send("{ error: false }");
-          }
-          res.end();
-        }
-      );
-
-      break;
-
-    case 2: //Verify Token :D
-      if (req.body.token != undefined) {
-        var database = require("../lib/db");
-        database.query(
-          `SELECT * FROM Users WHERE email = "${req.body.email}"`,
-          (error, data) => {
-            if (error) {
-              throw error;
-            } else {
-              if (data.length > 0) {
-                for (var count = 0; count < data.length; count++) {
-                  if (data[count].token == req.body.token) {
-                    json_send = { auth: true };
-                  }
-                }
-              }
-            }
-            res.send(JSON.stringify(json_send));
-            res.end();
-          }
-        );
-      } else {
-        res.send(JSON.stringify(json_send));
-        res.end();
-      }
-      break;
-
-    default:
-      res.send("{ error: true }");
-      res.end();
-      break;
-  }
-}
+function post(req, res) {}
 
 module.exports = { put, get, remove, post };

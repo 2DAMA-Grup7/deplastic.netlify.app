@@ -22,17 +22,14 @@ function get(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(
-    `DELETE * FROM Productes WHERE nom = "${req.body.nom}" `,
-    function (err) {
-      if (err) {
-        res.send("{ error: true }");
-      } else {
-        res.send("{ error: false }");
-      }
-      res.end();
+  database.query(`DELETE * FROM Productes WHERE nom = "${req.body.nom}" `, function (err) {
+    if (err) {
+      res.send("{ error: true }");
+    } else {
+      res.send("{ error: false }");
     }
-  );
+    res.end();
+  });
 }
 
 function post(req, res) {
@@ -41,9 +38,9 @@ function post(req, res) {
     `INSERT INTO Productes (nom, url, id, description, price) VALUES ('${req.body.nom}','${req.body.url}',NULL,'${req.body.description}','${req.body.price}`,
     function (err, result) {
       if (err) {
-        res.send("{ error: true }");
+        res.send(JSON.stringify({ success: false }));
       } else {
-        res.send("{ error: false }");
+        res.send(JSON.stringify({ success: true }));
       }
       res.end();
     }

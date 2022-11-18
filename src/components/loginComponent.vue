@@ -2,9 +2,9 @@
   <v-layout>
     <v-app-bar color="green">
       <img src="../assets/logo.svg" alt="logo" width="60" height="60" />
-      <v-toolbar-title-margin>Deplastic</v-toolbar-title-margin>
-    </v-app-bar></v-layout
-  >
+      Deplastic
+    </v-app-bar>
+  </v-layout>
   <v-card class="mx-auto" width="400" variant="outlined" color="green">
     <v-card-text>
       <v-card-text>
@@ -26,9 +26,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn :loading="loading[4]" :disabled="loading[4]" @click="load(4)"
-        >Login</v-btn
-      >
+      <v-btn :loading="loading[4]" :disabled="loading[4]" @click="load(4)">Login</v-btn>
     </v-card-actions>
   </v-card>
   <v-snackbar :timeout="3000" v-model="snackbar">
@@ -54,12 +52,11 @@ export default {
     load(i) {
       this.loading[i] = true;
       setTimeout(() => (this.loading[i] = false), 3000);
-      fetch("/.netlify/functions/api/user", {
+      fetch("/.netlify/functions/api/login", {
         method: "POST",
         body: JSON.stringify({
           email: this.email,
           password: this.password,
-          type: 0,
         }),
         headers: { "Content-Type": "application/json" },
       })
@@ -67,6 +64,7 @@ export default {
           return response.json();
         })
         .then((data) => {
+          console.log(data);
           if (!data.auth) {
             this.snackbar = true;
           } else {

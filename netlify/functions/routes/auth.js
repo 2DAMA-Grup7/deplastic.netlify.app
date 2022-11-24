@@ -57,7 +57,7 @@ function login(req, res) {
           if (data[count].password == req.body.password) {
             user = { id: data[count].USER_ID, email: data[count].email };
             let token = jwt.sign({ user }, process.env.my_secret_key);
-            json_send = { auth: true, token: token };
+            json_send = { auth: true, token: token, username: data[count].username };
             database.query(`UPDATE Users SET token = "${token}" WHERE USER_ID = "${user.id}"`);
           }
         }

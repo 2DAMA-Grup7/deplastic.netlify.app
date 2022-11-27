@@ -24,7 +24,8 @@ function post(req, res) {
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
-    `UPDATE Markers SET latitude='${req.body.latitude}',longitude='${req.body.longitude}', name='${req.body.new_name}', description=${req.body.description} WHERE name='${req.body.name}'`,
+    `UPDATE Markers SET latitude='${req.body.latitude}',longitude='${req.body.longitude}', name='${req.body.name}', 
+    description=${req.body.description} WHERE id_marker='${req.body.id_marker}'`,
     function (err, result) {
       if (err) {
         res.send(JSON.stringify({ success: false }));
@@ -38,7 +39,7 @@ function put(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(`DELETE FROM Markers WHERE name = "${req.body.name}" `, function (err) {
+  database.query(`DELETE FROM Markers WHERE id_marker = "${req.body.id_marker}" `, function (err) {
     if (err) {
       res.send(JSON.stringify({ success: false }));
     } else {

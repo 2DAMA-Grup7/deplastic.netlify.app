@@ -1,7 +1,8 @@
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
-    `UPDATE Users SET username='${req.body.username}',password='${req.body.password}', email='${req.body.newEmail}', roles='${req.body.roles}' WHERE email='${req.body.email}'`,
+    `UPDATE Users SET username='${req.body.username}',password='${req.body.password}', 
+    email='${req.body.email}', roles='${req.body.roles}' WHERE USER_ID='${req.body.USER_ID}'`,
     function (err, result) {
       if (err) {
         res.send(JSON.stringify({ success: false }));
@@ -22,7 +23,7 @@ function get(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(`DELETE FROM Users WHERE email = "${req.body.email}" `, function (err) {
+  database.query(`DELETE FROM Users WHERE USER_ID = "${req.body.USER_ID}" `, function (err) {
     if (err) {
       res.send(JSON.stringify({ success: false }));
     } else {
@@ -32,6 +33,6 @@ function remove(req, res) {
   });
 }
 
-function post(req, res) {}
+function post(req, res) { }
 
 module.exports = { put, get, remove, post };

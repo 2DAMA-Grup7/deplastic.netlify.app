@@ -1,46 +1,50 @@
 import { createRouter, createWebHistory } from "vue-router";
-import LoginView from "../views/Login.vue";
+
+import getCookie from "../functions/getcookie.js"
+
+function guardMyroute(to, from, next) {
+    fetch("/.netlify/functions/api/token", {
+        method: "POST",
+        body: JSON.stringify({
+            token: getCookie("login_token"),
+            email: getCookie("email"),
+        }),
+        headers: { "Content-Type": "application/json" },
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            if (data.auth) {
+                next();
+            } else {
+                next('/login');
+            }
+        });
+}
 
 const routes = [
-  {
-    path: "/login",
-    name: "login",
-    component: LoginView,
-  },
-  {
-    path: "/",
-    name: "home",
-    component: () => import("../views/Home.vue"),
-  },
-  {
-    path: "/admin",
-    name: "admin",
-    component: () => import("../views/Admin.vue"),
-    meta: {
-      authRequired: true,
+    {
+        path: "/",
+        name: "home",
+        component: () => import("../views/Home.vue"),
     },
-  },
-  {
-    path: "/admin/markers",
-    name: "markers",
-    component: () => import("../views/Markers.vue"),
-    meta: {
-      authRequired: true,
+    {
+        path: "/login",
+        name: "login",
+        component: () => import("../views/Login.vue"),
     },
-  },
-  {
-    path: "/admin/users",
-    name: "users",
-    component: () => import("../views/Users.vue"),
-    meta: {
-      authRequired: true,
+    {
+        path: "/dashboard",
+        name: "dashboard",
+        beforeEnter: guardMyroute,
+        component: () => import("../views/Dashboard.vue"),
     },
-  },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 });
 
 export default router;

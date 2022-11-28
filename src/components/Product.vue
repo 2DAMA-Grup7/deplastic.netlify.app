@@ -104,7 +104,7 @@
       deleteProduct(id) {
         fetch("/.netlify/functions/api/products", {
           method: "DELETE",
-          body: JSON.stringify({ id_product: id }),
+          body: JSON.stringify({ id: id }),
           headers: { "Content-Type": "application/json" },
         })
           .then((response) => {
@@ -116,11 +116,11 @@
           });
       },
       editProduct() {
-        if (this.inputProduct.id_product) {
+        if (this.inputProduct.id) {
           fetch("/.netlify/functions/api/products", {
             method: "PUT",
             body: JSON.stringify({
-              id_product: this.inputProduct.id_product,
+              id: this.inputProduct.id,
               nom: this.inputProduct.nom,
               url: this.inputProduct.url,
               description: this.inputProduct.description,

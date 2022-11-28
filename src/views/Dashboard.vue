@@ -26,6 +26,7 @@
     </v-navigation-drawer>
 
     <v-main>
+      <v-list>
       <v-sheet class="d-flex" color="transparent">
         <v-sheet class="ma-2 pa-2" color="transparent">
           <Marker />
@@ -37,6 +38,7 @@
           <Product/>
         </v-sheet>
       </v-sheet>
+    </v-list>
     </v-main>
   </v-layout>
 </template>

@@ -6,6 +6,8 @@ const router = express.Router();
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const markers = require("./routes/markers");
+const markers = require("./routes/products");
+
 
 //router.post("/user", users.post);
 router.get("/user", users.get);
@@ -16,9 +18,9 @@ router.post("/register", auth.register);
 router.post("/login", auth.login);
 router.post("/token", auth.token);
 
-router.get("/products", users.get);
-router.delete("/products", users.remove);
-router.put("/products", users.put);
+router.get("/products", products.get);
+router.delete("/products", products.remove);
+router.put("/products", products.put);
 
 
 router.post("/markers", markers.post);

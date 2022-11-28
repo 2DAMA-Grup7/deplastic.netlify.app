@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in listProduct" :key="product.id">
+          <tr v-for="product in listProducts" :key="product.id">
             <td class="text-left">{{ product.id }}</td>
             <td class="text-left">{{ product.nom }}</td>
             <td class="text-left">{{ product.url }}</td>
@@ -90,7 +90,7 @@
       return {
         snackbar: false,
         errorText: "Something went wrong!",
-        listProduct: [],
+        listProducts: [],
         inputProduct: {},
         dialog: false,
       };
@@ -99,7 +99,7 @@
       async getData() {
         const res = await fetch("/.netlify/functions/api/products");
         const finalRes = await res.json();
-        this.listProduct = finalRes;
+        this.listProducts = finalRes;
       },
       deleteProduct(id) {
         fetch("/.netlify/functions/api/products", {

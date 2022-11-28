@@ -33,6 +33,9 @@
         <v-sheet class="ma-2 pa-2" color="transparent">
           <User />
         </v-sheet>
+         <v-sheet class="ma-2 pa-2" color="transparent">
+          <Product></Product>
+        </v-sheet>
       </v-sheet>
     </v-main>
   </v-layout>
@@ -42,4 +45,5 @@ import getCookie from "../functions/getcookie.js";
 import clearCookie from "../functions/clearcookie.js";
 import Marker from "../components/Marker.vue";
 import User from "../components/User.vue";
+import Product from "@/components/Product.vue";
 </script>

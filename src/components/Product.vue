@@ -18,7 +18,7 @@
           <tr v-for="product in listProduct" :key="product.id">
             <td class="text-left">{{ product.id }}</td>
             <td class="text-left">{{ product.nom }}</td>
-            <td class="text-left">{{ product.URL }}</td>
+            <td class="text-left">{{ product.url }}</td>
             <td class="text-left">{{ product.description }}</td>
             <td class="text-left">
               <v-dialog v-model="dialog" width="600" persistent>
@@ -38,7 +38,7 @@
                       label="Name"
                     ></v-text-field>
                     <v-text-field
-                      v-model="inputProduct.URL"
+                      v-model="inputProduct.url"
                       label="URL"
                     ></v-text-field>
                     <v-text-field
@@ -115,7 +115,7 @@
             body: JSON.stringify({
               id_product: this.inputProduct.id_product,
               nom: this.inputProduct.nom,
-              URL: this.inputProduct.URL,
+              url: this.inputProduct.url,
               description: this.inputProduct.description,
             }),
             headers: { "Content-Type": "application/json" },
@@ -141,7 +141,7 @@
           body: JSON.stringify({
             id_product: this.inputProduct.id_product,
               nom: this.inputProduct.nom,
-              URL: this.inputProduct.URL,
+              url: this.inputProduct.url,
               description: this.inputProduct.description,
           }),
           headers: { "Content-Type": "application/json" },

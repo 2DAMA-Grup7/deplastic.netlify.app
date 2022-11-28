@@ -147,7 +147,7 @@
         fetch("/.netlify/functions/api/products", {
           method: "POST",
           body: JSON.stringify({
-            id_product: this.inputProduct.id_product,
+            
               nom: this.inputProduct.nom,
               url: this.inputProduct.url,
               description: this.inputProduct.description,

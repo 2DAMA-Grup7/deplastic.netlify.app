@@ -34,7 +34,7 @@
           <User />
         </v-sheet>
          <v-sheet class="ma-2 pa-2" color="transparent">
-          <Product></Product>
+          <Product/>
         </v-sheet>
       </v-sheet>
     </v-main>

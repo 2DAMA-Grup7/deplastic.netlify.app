@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in listProduct" :key="marker.id">
+          <tr v-for="product in listProduct" :key="pr.id">
             <td class="text-left">{{ product.id }}</td>
             <td class="text-left">{{ product.name }}</td>
             <td class="text-left">{{ product.URL }}</td>
@@ -83,8 +83,8 @@
       return {
         snackbar: false,
         errorText: "Something went wrong!",
-        listMarkers: [],
-        inputMarker: {},
+        listProduct: [],
+        inputProduct: {},
         dialog: false,
       };
     },
@@ -113,7 +113,7 @@
           fetch("/.netlify/functions/api/products", {
             method: "PUT",
             body: JSON.stringify({
-              id_marker: this.inputProduct.id_product,
+              id_product: this.inputProduct.id_product,
               name: this.inputProduct.name,
               URL: this.inputProduct.URL,
               description: this.inputProduct.description,
@@ -139,7 +139,7 @@
         fetch("/.netlify/functions/api/products", {
           method: "POST",
           body: JSON.stringify({
-            id_marker: this.inputProduct.id_product,
+            id_product: this.inputProduct.id_product,
               name: this.inputProduct.name,
               URL: this.inputProduct.URL,
               description: this.inputProduct.description,
@@ -159,7 +159,7 @@
       },
       closeDialog() {
         // reload inputMarker
-        this.inputMarker = {};
+        this.inputProduct = {};
         this.dialog = false;
         window.location.reload();
       },

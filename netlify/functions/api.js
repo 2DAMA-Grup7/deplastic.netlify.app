@@ -7,7 +7,9 @@ const users = require("./routes/users");
 const auth = require("./routes/auth");
 const markers = require("./routes/markers");
 const products = require("./routes/products");
+const transaccion = require("./routes/transaccion");
 
+router.get("/transaccion", transaccion.get);
 
 //router.post("/user", users.post);
 router.get("/user", users.get);

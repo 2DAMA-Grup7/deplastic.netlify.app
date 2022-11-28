@@ -16,6 +16,11 @@ router.post("/register", auth.register);
 router.post("/login", auth.login);
 router.post("/token", auth.token);
 
+router.get("/products", users.get);
+router.delete("/products", users.remove);
+router.put("/products", users.put);
+
+
 router.post("/markers", markers.post);
 router.get("/markers", markers.get);
 router.delete("/markers", markers.remove);

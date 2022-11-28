@@ -41,7 +41,7 @@ function put(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(`DELETE FROM Markers WHERE id = "${req.body.id}" `, function (err) {
+  database.query(`DELETE FROM Productes WHERE id = "${req.body.id}" `, function (err) {
     if (err) {
       res.send(JSON.stringify({ success: false }));
     } else {

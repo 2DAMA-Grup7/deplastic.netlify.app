@@ -25,8 +25,8 @@ function post(req, res) {
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
-    `UPDATE Productes SET nom='${req.body.nom}',url='${req.body.url}', description='${req.body.description}', preu='${req.body.preu}' WHERE id='${req.body.id}'`,
-    function (err, result) {
+    `UPDATE Productes SET url='${req.body.url}',description='${req.body.description}', nom='${req.body.nom}', 
+    price=${req.body.price} WHERE id='${req.body.id}'`,    function (err, result) {
       if (err) {
         res.send(JSON.stringify({ success: false }));
       } else {

@@ -1,24 +1,24 @@
 <template>
     <v-card>
       <v-toolbar class="bg-deep-purple" flat>
-        <v-toolbar-title>User</v-toolbar-title>
+        <v-toolbar-title>Products</v-toolbar-title>
         <v-btn variant="outlined" @click="dialog = true"> New Item </v-btn>
       </v-toolbar>
       <v-table>
         <thead>
           <tr>
             <th class="text-left">ID</th>
-            <th class="text-left">USERNAME</th>
-            <th class="text-left">EMAIL</th>
-            <th class="text-left">ROLES</th>
-            <th class="text-left">PASSWORD</th>
+            <th class="text-left">Product</th>
+            <th class="text-left">URL</th>
+            <th class="text-left">Description</th>
+            <th class="text-left">Price</th>
             <th class="text-left">ACTIONS</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="user in listUsers" :key="user.USER_ID">
             <td class="text-left">{{ user.USER_ID }}</td>
-            <td class="text-left">{{ user.username }}</td>
+            <td class="text-left">{{ user.product }}</td>
             <td class="text-left">{{ user.email }}</td>
             <td class="text-left">{{ user.roles }}</td>
             <td class="text-left">{{ user.password }}</td>
@@ -97,12 +97,12 @@
     },
     methods: {
       async getData() {
-        const res = await fetch("/.netlify/functions/api/user");
+        const res = await fetch("/.netlify/functions/api/products");
         const finalRes = await res.json();
         this.listUsers = finalRes;
       },
       deleteUser(id) {
-        fetch("/.netlify/functions/api/user", {
+        fetch("/.netlify/functions/api/products", {
           method: "DELETE",
           body: JSON.stringify({ USER_ID: id }),
           headers: { "Content-Type": "application/json" },
@@ -117,7 +117,7 @@
       },
       editUser() {
         if (this.inputUser.USER_ID) {
-          fetch("/.netlify/functions/api/user", {
+          fetch("/.netlify/functions/api/products", {
             method: "PUT",
             body: JSON.stringify({
               USER_ID: this.inputUser.USER_ID,
@@ -144,7 +144,7 @@
         }
       },
       createUser() {
-        fetch("/.netlify/functions/api/register", {
+        fetch("/.netlify/functions/api/products", {
           method: "POST",
           body: JSON.stringify({
             username: this.inputUser.username,

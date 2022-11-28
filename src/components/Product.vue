@@ -11,7 +11,7 @@
             <th class="text-left">NAME</th>
             <th class="text-left">URL</th>
             <th class="text-left">DESCRIPTION</th>
-            <th class="text-left">Price</th>
+            <th class="text-left">PRICE</th>
             <th class="text-left">ACTIONS</th>
           </tr>
         </thead>
@@ -167,7 +167,7 @@
           });
       },
       closeDialog() {
-        // reload inputMarker
+        
         this.inputProduct = {};
         this.dialog = false;
         window.location.reload();

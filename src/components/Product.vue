@@ -11,6 +11,7 @@
             <th class="text-left">NAME</th>
             <th class="text-left">URL</th>
             <th class="text-left">DESCRIPTION</th>
+            <th class="text-left">Price</th>
             <th class="text-left">ACTIONS</th>
           </tr>
         </thead>
@@ -20,6 +21,8 @@
             <td class="text-left">{{ product.nom }}</td>
             <td class="text-left">{{ product.url }}</td>
             <td class="text-left">{{ product.description }}</td>
+            <td class="text-left">{{ product.price }}</td>
+
             <td class="text-left">
               <v-dialog v-model="dialog" width="600" persistent>
                 <template v-slot:activator="{ props }">
@@ -44,6 +47,10 @@
                     <v-text-field
                       v-model="inputProduct.description"
                       label="Description"
+                    ></v-text-field>
+                    <v-text-field
+                      v-model="inputProduct.price"
+                      label="Price"
                     ></v-text-field>
                     <v-btn color="success" class="mr-4" @click="editProduct">
                       Submit
@@ -117,6 +124,7 @@
               nom: this.inputProduct.nom,
               url: this.inputProduct.url,
               description: this.inputProduct.description,
+              price:this.inputProduct.price
             }),
             headers: { "Content-Type": "application/json" },
           })
@@ -143,6 +151,7 @@
               nom: this.inputProduct.nom,
               url: this.inputProduct.url,
               description: this.inputProduct.description,
+              price:this.inputProduct.price
           }),
           headers: { "Content-Type": "application/json" },
         })

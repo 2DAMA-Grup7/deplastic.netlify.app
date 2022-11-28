@@ -17,7 +17,7 @@
         <tbody>
           <tr v-for="product in listProduct" :key="product.id">
             <td class="text-left">{{ product.id }}</td>
-            <td class="text-left">{{ product.name }}</td>
+            <td class="text-left">{{ product.nom }}</td>
             <td class="text-left">{{ product.URL }}</td>
             <td class="text-left">{{ product.description }}</td>
             <td class="text-left">
@@ -34,7 +34,7 @@
                 <v-card>
                   <v-form ref="form">
                     <v-text-field
-                      v-model="inputProduct.name"
+                      v-model="inputProduct.nom"
                       label="Name"
                     ></v-text-field>
                     <v-text-field
@@ -114,7 +114,7 @@
             method: "PUT",
             body: JSON.stringify({
               id_product: this.inputProduct.id_product,
-              name: this.inputProduct.name,
+              nom: this.inputProduct.nom,
               URL: this.inputProduct.URL,
               description: this.inputProduct.description,
             }),
@@ -140,7 +140,7 @@
           method: "POST",
           body: JSON.stringify({
             id_product: this.inputProduct.id_product,
-              name: this.inputProduct.name,
+              nom: this.inputProduct.nom,
               URL: this.inputProduct.URL,
               description: this.inputProduct.description,
           }),

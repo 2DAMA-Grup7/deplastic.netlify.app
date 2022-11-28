@@ -18,7 +18,7 @@ router.post("/register", auth.register);
 router.post("/login", auth.login);
 router.post("/token", auth.token);
 
-router.get("/products", products.post);
+router.post("/products", products.post);
 router.get("/products", products.get);
 router.delete("/products", products.remove);
 router.put("/products", products.put);

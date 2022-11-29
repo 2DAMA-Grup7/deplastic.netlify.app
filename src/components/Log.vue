@@ -14,35 +14,22 @@
 </template>
 
 <script>
-import Login from "@/views/Login.vue";
-
 export default {
   data() {
     return {
       snackbar: false,
       errorText: "Something went wrong!",
-
+      data: [],
       dialog: false,
     };
   },
   methods: {
     async readFile() {
-      fs.readFile(
-        "../../netlify/functions/routes/Log.txt",
-        "utf8",
-        (err, data) => {
-          if (err) {
-            return err;
-          } else {
-            return data;
-          }
-        }
-      );
-    },
-    async getData() {
-      const res = await fetch("");
-      const finalRes = await res.json();
-      this.listMarkers = finalRes;
+      var fr = new FileReader();
+      fr.onload = function () {
+        document.getElementById("Log").textContent = fr.result;
+      };
+      this.data = fr.readAsText(this.files[0]);
     },
   },
   mounted() {

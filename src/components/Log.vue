@@ -2,11 +2,11 @@
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
       <v-toolbar-title>Log</v-toolbar-title>
-      <v-card></v-card>
+      <v-card id:logCard></v-card>
       <v-table>
         <thead>
           <tr >
-            <td class="text-left" id:fileDisplayArea>{{log}}</td>
+            <td class="text-left"  ></td>
           </tr>
         </thead>
       </v-table>
@@ -27,24 +27,7 @@ export default {
   
  
 };
-var fileDisplayArea = document.getElementById('fileDisplayArea');
-function readTextFile(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                 
-            }
-        }
-    }
-    rawFile.send(null);
-}
+
 readTextFile("../../netlify/functions/routes/log.txt");
 
 </script>

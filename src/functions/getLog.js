@@ -1,21 +1,13 @@
-const {readFileSync, promises: fsPromises} = require('fs');
+var arrayData = new Array();
+var logTxt = new XMLHttpRequest();
+var ruta = "../../netlify/functions/routes/Log.txt"
 
-async function asyncReadFile(filename) {
-    try {
-      const contents = await fsPromises.readFile(filename, 'utf-8');
-  
-      const arr = contents.split(/\r?\n/);
-  
-      console.log(arr); 
-      return arr;
-    } catch (err) {
-      console.log(err);
+logTxt.open("GET",ruta,false);
+logTxt.send(null)
+var txt = logTxt.responseText
+for (let index = 0; index < txt.length; index++) {
+    arrayData.push(txt[index]);
     }
-  }
-  
-  asyncReadFile("../../netlify/funtions/routes/log.");
-
-
-
-export default getLog;
-
+arrayData.forEach(function(data){
+    console.log(data)
+})

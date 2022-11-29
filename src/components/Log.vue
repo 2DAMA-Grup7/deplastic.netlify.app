@@ -5,8 +5,8 @@
       <v-card></v-card>
       <v-table>
         <thead>
-          <tr v-for="item in logtxt">
-            <td class="text-left">{{toString( logtxt.item) }}</td>
+          <tr >
+            <td class="text-left" id:fileDisplayArea></td>
           </tr>
         </thead>
       </v-table>
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import logtxt from "../../netlify/functions/routes/Log.txt";
 export default {
   data() {
     return {
@@ -29,17 +28,26 @@ export default {
     this.getData();
   },
 };
-document.getElementById(logtxt)
-.addEventListener('change', function() {
-
-var fr=new FileReader();
-fr.onload=function(){
-document.getElementById('output')
-.textContent=fr.result;
+var fileDisplayArea = document.getElementById('fileDisplayArea');
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                fileDisplayArea.innerText = allText 
+            }
+        }
+    }
+    rawFile.send(null);
 }
 
-.readAsText(this.files[0]);
-})
+readTextFile("../../netlify/funtions/log.txt");
 </script>
 
  

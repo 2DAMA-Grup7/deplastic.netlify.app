@@ -35,7 +35,7 @@
             <User />
           </v-sheet>
           <v-sheet class="ma-2 pa-2" color="transparent">
-            <Log >{{toString(getLog)}}</Log>
+            <Log >{{toString(getLog())}}</Log>
           </v-sheet>
         </v-sheet>
       </v-row>

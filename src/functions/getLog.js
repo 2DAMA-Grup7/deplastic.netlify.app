@@ -11,3 +11,5 @@ for (let index = 0; index < txt.length; index++) {
 arrayData.forEach(function(data){
     console.log(data)
 })
+
+export default getLog

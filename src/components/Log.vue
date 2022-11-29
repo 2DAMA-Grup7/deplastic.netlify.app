@@ -6,7 +6,7 @@
       <v-table>
         <thead>
           <tr >
-            <td class="text-left"  ></td>
+            <td class="text-left"  >{{getLog}}</td>
           </tr>
         </thead>
       </v-table>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import getLog from '@/functions/getLog';
+
 export default {
   data() {
     return {
@@ -28,7 +30,6 @@ export default {
  
 };
 
-readTextFile("../../netlify/functions/routes/log.txt");
 
 </script>
 

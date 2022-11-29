@@ -19,7 +19,7 @@ export default {
     return {
       snackbar: false,
       errorText: "Something went wrong!",
-      data: [],
+      data: String,
       dialog: false,
     };
   },

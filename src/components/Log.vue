@@ -24,9 +24,7 @@ export default {
     };
   },
   
-  mounted() {
-    this.getData();
-  },
+ 
 };
 var fileDisplayArea = document.getElementById('fileDisplayArea');
 function readTextFile(file)
@@ -46,8 +44,8 @@ function readTextFile(file)
     }
     rawFile.send(null);
 }
+readTextFile("../../netlify/functions/routes/log.txt");
 
-readTextFile("../../netlify/funtions/log.txt");
 </script>
 
  

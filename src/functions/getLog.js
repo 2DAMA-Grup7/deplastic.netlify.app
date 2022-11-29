@@ -18,3 +18,4 @@ async function asyncReadFile(filename) {
 
 
 export default getLog;
+

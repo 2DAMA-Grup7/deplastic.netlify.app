@@ -5,8 +5,8 @@
       <v-card>{{allText}}</v-card>
       <v-table>
         <thead>
-          <tr v-for="item in data">
-            <td class="text-left">{{ data.item }}</td>
+          <tr v-for="item in allText">
+            <td class="text-left">{{ allText.item }}</td>
           </tr>
         </thead>
       </v-table>

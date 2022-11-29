@@ -8,16 +8,17 @@
       <tbody>
       <tr v-for="item in logs" :key="item">
           </tr>
-        </tbody>
       <v-card>
-    {{this.logs}}
+      {{this.logs}}
       </v-card>
       <v-card>
-    {{logs}}
+       {{logs}}
       </v-card>
-  
-    </v-toolbar>
-  </v-card>
+      </tbody>
+
+
+</v-toolbar>
+</v-card>
 </template>
 
 <script>

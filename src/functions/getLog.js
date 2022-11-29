@@ -1,3 +1,5 @@
+function getLog(){
+
 var arrayData = new Array();
 var logTxt = new XMLHttpRequest();
 var ruta = "../../netlify/functions/routes/Log.txt"
@@ -8,5 +10,5 @@ var txt = logTxt.responseText
 arrayData.forEach(function(data){
     toString(data)
 })
-
-export default getLog
+}
+export default getLog;

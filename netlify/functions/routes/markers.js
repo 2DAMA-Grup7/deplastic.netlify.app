@@ -1,6 +1,6 @@
 function get(req, res) {
   var database = require("../lib/db");
-  
+
   database.query("SELECT * FROM Markers", function (err, result) {
     res.json(result);
   });
@@ -12,6 +12,8 @@ function post(req, res) {
     `INSERT INTO Markers (id_marker, name, latitude, longitude, description) VALUES (NULL, "${req.body.name}","${req.body.latitude}","${req.body.longitude}","${req.body.description}")`,
     function (err, result) {
       if (err) {
+        logging(res);
+
         res.send(JSON.stringify({ success: false }));
         res.end();
       } else {
@@ -29,6 +31,7 @@ function put(req, res) {
     description=${req.body.description} WHERE id_marker='${req.body.id_marker}'`,
     function (err, result) {
       if (err) {
+        logging(res);
         res.send(JSON.stringify({ success: false }));
       } else {
         res.send(JSON.stringify({ success: true }));
@@ -40,14 +43,31 @@ function put(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(`DELETE FROM Markers WHERE id_marker = "${req.body.id_marker}" `, function (err) {
-    if (err) {
-      res.send(JSON.stringify({ success: false }));
-    } else {
-      res.send(JSON.stringify({ success: true }));
+  database.query(
+    `DELETE FROM Markers WHERE id_marker = "${req.body.id_marker}" `,
+    function (err) {
+      if (err) {
+        logging(res);
+
+        res.send(JSON.stringify({ success: false }));
+      } else {
+        res.send(JSON.stringify({ success: true }));
+      }
+      res.end();
     }
-    res.end();
-  });
+  );
 }
 
 module.exports = { get, post, remove, put };
+function logging(text) {
+  fs.writeFile(
+    "Log.txt",
+    text,
+    {
+      flag: "a",
+    },
+    (err) => {
+      if (err) console.log(err);
+    }
+  );
+}

@@ -5,6 +5,8 @@ function put(req, res) {
     email='${req.body.email}', roles='${req.body.roles}' WHERE USER_ID='${req.body.USER_ID}'`,
     function (err, result) {
       if (err) {
+        logging(res);
+
         res.send(JSON.stringify({ success: false }));
       } else {
         res.send(JSON.stringify({ success: true }));
@@ -23,16 +25,33 @@ function get(req, res) {
 
 function remove(req, res) {
   var database = require("../lib/db");
-  database.query(`DELETE FROM Users WHERE USER_ID = "${req.body.USER_ID}" `, function (err) {
-    if (err) {
-      res.send(JSON.stringify({ success: false }));
-    } else {
-      res.send(JSON.stringify({ success: true }));
+  database.query(
+    `DELETE FROM Users WHERE USER_ID = "${req.body.USER_ID}" `,
+    function (err) {
+      if (err) {
+        logging(res);
+
+        res.send(JSON.stringify({ success: false }));
+      } else {
+        res.send(JSON.stringify({ success: true }));
+      }
+      res.end();
     }
-    res.end();
-  });
+  );
 }
 
-function post(req, res) { }
+function post(req, res) {}
 
 module.exports = { put, get, remove, post };
+function logging(text) {
+  fs.writeFile(
+    "Log.txt",
+    text,
+    {
+      flag: "a",
+    },
+    (err) => {
+      if (err) console.log(err);
+    }
+  );
+}

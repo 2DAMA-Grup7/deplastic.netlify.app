@@ -6,7 +6,7 @@
       <v-table>
         <thead>
           <tr >
-            <td class="text-left" id:fileDisplayArea></td>
+            <td class="text-left" id:fileDisplayArea>{{log}}</td>
           </tr>
         </thead>
       </v-table>
@@ -21,6 +21,7 @@ export default {
       snackbar: false,
       errorText: "Something went wrong!",
       dialog: false,
+      log:this.allText
     };
   },
   
@@ -38,7 +39,7 @@ function readTextFile(file)
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 var allText = rawFile.responseText;
-                fileDisplayArea.innerText = allText 
+                 
             }
         }
     }

@@ -1,2 +1,2 @@
-<input type="file" id="Log">
+
 asdasd

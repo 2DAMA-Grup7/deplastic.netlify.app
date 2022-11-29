@@ -2,11 +2,22 @@
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
       <v-toolbar-title>Log</v-toolbar-title>
+      <thead>
+        <th class="text-left">Logs</th>
+      </thead>
+      <tbody>
       <tr v-for="item in logs" :key="item">
           <td class="text-left">{{item.logs}}</td>
           </tr>
+        </tbody>
       <v-card>
-     
+    {{this.logs}}
+      </v-card>
+      <v-card>
+    {{logs}}
+      </v-card>
+      <v-card>
+    {{logtxt()}}
       </v-card>
     </v-toolbar>
   </v-card>

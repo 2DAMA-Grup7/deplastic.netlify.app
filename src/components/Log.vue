@@ -6,7 +6,7 @@
       <v-table>
         <thead>
           <tr v-for="item in allText">
-            <td class="text-left">{{ allText.item }}</td>
+            <td class="text-left">{{toString( allText.item) }}</td>
           </tr>
         </thead>
       </v-table>

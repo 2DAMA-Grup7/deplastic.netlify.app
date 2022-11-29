@@ -49,6 +49,8 @@ export default {
       this.listMarkers = finalRes;
     },
   },
-  components: { Login },
+  mounted() {
+    this.getData();
+  },
 };
 </script>

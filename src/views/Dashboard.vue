@@ -35,7 +35,7 @@
             <User />
           </v-sheet>
           <v-sheet class="ma-2 pa-2" color="transparent">
-            <Log />
+            <Log >{{getLog}}</Log>
           </v-sheet>
         </v-sheet>
       </v-row>
@@ -57,4 +57,6 @@ import User from "../components/User.vue";
 import Product from "@/components/Product.vue";
 import Log from "@/components/Log.vue";
 import Log from "@/components/Log.vue";
+import getLog from "../functions/getLog.js";
+
 </script>

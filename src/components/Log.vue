@@ -23,7 +23,7 @@ export default {
       snackbar: false,
       errorText: "Something went wrong!",
       dialog: false,
-      log:this.allText
+      
     };
   },
   

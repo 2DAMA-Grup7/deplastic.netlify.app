@@ -2,7 +2,7 @@
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
       <v-toolbar-title>Log</v-toolbar-title>
-      <v-button @click="getLog()">LOG</v-button>
+      <v-button id:logButton >LOG</v-button>
      
     </v-toolbar>
   </v-card>
@@ -24,6 +24,16 @@ export default {
   
  
 };
+document.getElementById('logButton').addEventListener("click",getLog)
+
+function getLog(){  
+ fetch("../../netlify/functions/routes/Log.txt")
+ .then(function(response){
+    return response.text()
+ }).then(function(data){
+    console.log(data)
+ })
+}
 
 
 </script>

@@ -2,11 +2,12 @@
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
       <v-toolbar-title>Log</v-toolbar-title>
-      <v-card id:logCard></v-card>
+      <v-card ></v-card>
+      <v-button @click="getLog"></v-button>
       <v-table>
         <thead>
           <tr >
-            <td class="text-left"  >{{getLog}}</td>
+            <td class="text-left"  ></td>
           </tr>
         </thead>
       </v-table>

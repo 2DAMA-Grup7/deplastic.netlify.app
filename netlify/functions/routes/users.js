@@ -6,7 +6,6 @@ function put(req, res) {
     function (err, result) {
       if (err) {
         logging(res);
-
         res.send(JSON.stringify({ success: false }));
       } else {
         res.send(JSON.stringify({ success: true }));
@@ -30,7 +29,6 @@ function remove(req, res) {
     function (err) {
       if (err) {
         logging(res);
-
         res.send(JSON.stringify({ success: false }));
       } else {
         res.send(JSON.stringify({ success: true }));

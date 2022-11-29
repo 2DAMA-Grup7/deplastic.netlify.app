@@ -1,8 +1,20 @@
 <template>
-  <v-card title:Log align:center> </v-card>
-  <tr v-for="item in data">
-    <td class="text-left">{{ data.item }}</td>
-  </tr>
+  <v-card>
+    <v-toolbar class="bg-deep-purple" flat>
+      <v-toolbar-title>Log</v-toolbar-title>
+      <v-table>
+        <thead>
+          <tr v-for="item in data">
+            <td class="text-left">{{ data.item }}</td>
+          </tr>
+        </thead>
+      </v-table>
+    </v-toolbar>
+
+    <tr v-for="item in data">
+      <td class="text-left">{{ data.item }}</td>
+    </tr>
+  </v-card>
 </template>
 
 <script>

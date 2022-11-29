@@ -2,6 +2,7 @@
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
       <v-toolbar-title>Log</v-toolbar-title>
+      <p>{{logs}}</p>
       <thead>
         <th class="text-left">Logs</th>
       </thead>
@@ -23,8 +24,6 @@
 
 <script>
 import logtxt from "raw-loader!../../netlify/functions/routes/Log.txt"
-
-
 export default{
 
   data(){

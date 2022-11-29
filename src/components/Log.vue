@@ -2,7 +2,6 @@
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
       <v-toolbar-title>Log</v-toolbar-title>
-      <v-card ></v-card>
       <v-button @click="getLog"></v-button>
       <v-table>
         <thead>
@@ -17,6 +16,7 @@
 
 <script>
 import getLog from '@/functions/getLog';
+
 
 export default {
   data() {

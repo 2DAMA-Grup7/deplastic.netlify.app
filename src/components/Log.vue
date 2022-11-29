@@ -9,9 +9,6 @@
 </template>
 
 <script>
-import getLog from '@/functions/getLog';
-
-
 export default {
   data() {
     return {

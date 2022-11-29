@@ -29,7 +29,7 @@ export default {
     this.getData();
   },
 };
-document.getElementById("Log")
+document.getElementById(logtxt)
 .addEventListener('change', function() {
 
 var fr=new FileReader();

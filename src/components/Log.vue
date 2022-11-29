@@ -10,10 +10,6 @@
         </thead>
       </v-table>
     </v-toolbar>
-
-    <tr v-for="item in data">
-      <td class="text-left">{{ data.item }}</td>
-    </tr>
   </v-card>
 </template>
 

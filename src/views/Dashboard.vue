@@ -56,4 +56,5 @@ import Marker from "../components/Marker.vue";
 import User from "../components/User.vue";
 import Product from "@/components/Product.vue";
 import Log from "@/components/Log.vue";
+import Log from "@/components/Log.vue";
 </script>

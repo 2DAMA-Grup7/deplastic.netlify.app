@@ -1,0 +1,26 @@
+<template>
+  <v-card>
+    <v-toolbar class="bg-deep-purple" flat>
+      <v-toolbar-title>Log</v-toolbar-title>
+      <tr v-for="item in logs" >
+          <td class="text-left">{{item.logs}}</td>
+          </tr>
+      <v-card>
+     
+      </v-card>
+    </v-toolbar>
+  </v-card>
+</template>
+
+<script>
+import logtxt from "../../netlify/functions/routes/Log.txt"
+
+export default{
+
+  data(){
+    return{logs:logtxt}
+  }
+}
+
+</script>
+

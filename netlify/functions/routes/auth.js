@@ -3,7 +3,7 @@ const e = require("express");
 function register(req, res) {
   var database = require("../lib/db");
   database.query(
-    `INSERT INTO Users (USER_ID, username, password, email, roles, token) VALUES (NULL, "${req.body.username}","${req.body.password}","${req.body.email}","${req.body.roles}", "")`,
+    `INSERT INTO Users (USER_ID, username, password, email, roles, token, PointTotal) VALUES (NULL, "${req.body.username}","${req.body.password}","${req.body.email}","${req.body.roles}", "", 0)`,
     function (err, result) {
       if (err) {
         res.send(JSON.stringify({ success: false }));

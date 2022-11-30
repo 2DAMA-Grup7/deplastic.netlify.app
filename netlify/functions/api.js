@@ -11,6 +11,7 @@ const transaction = require("./routes/transaction");
 const receipt = require("./routes/receipt");
 
 router.post("/receipt", receipt.post);
+router.get("/receipt" , receipt.get);
 
 router.get("/transaction", transaction.get);
 

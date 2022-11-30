@@ -1,7 +1,7 @@
 function put(req, res) {
   var database = require("../lib/db");
   database.query(
-    `UPDATE Productes nom='${req.body.nom}',url='${req.body.url}', description='${req.body.description}', preu='${req.body.preu}' WHERE id='${req.body.id}'`,
+    `UPDATE Transaccio nom='${req.body.nom}',url='${req.body.url}', description='${req.body.description}', preu='${req.body.preu}' WHERE id='${req.body.id}'`,
     function (err, result) {
       if (err) {
         res.send("{ error: true }");
@@ -23,7 +23,7 @@ function get(req, res) {
 function remove(req, res) {
   var database = require("../lib/db");
   database.query(
-    `DELETE * FROM Productes WHERE nom = "${req.body.nom}" `,
+    `DELETE * FROM Transaccio WHERE nom = "${req.body.nom}" `,
     function (err) {
       if (err) {
         res.send("{ error: true }");
@@ -38,7 +38,7 @@ function remove(req, res) {
 function post(req, res) {
   var database = require("../lib/db");
   database.query(
-    `INSERT INTO Productes (nom, url, id, description, price) VALUES ('${req.body.nom}','${req.body.url}',NULL,'${req.body.description}','${req.body.price}`,
+    `INSERT INTO Transaccio (nom, url, id, description, price) VALUES ('${req.body.nom}','${req.body.url}',NULL,'${req.body.description}','${req.body.price}`,
     function (err, result) {
       if (err) {
         res.send(JSON.stringify({ success: false }));

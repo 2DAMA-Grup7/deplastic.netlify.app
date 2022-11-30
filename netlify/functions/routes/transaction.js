@@ -38,7 +38,7 @@ function remove(req, res) {
 function post(req, res) {
   var database = require("../lib/db");
   database.query(
-    `INSERT INTO Transaccio (nom, url, id, description, price) VALUES ('${req.body.nom}','${req.body.url}',NULL,'${req.body.description}','${req.body.price}`,
+    `INSERT INTO Transaccio (nom, url, id, description, price) VALUES ('${req.body.nom}','${req.body.url}',NULL,'${req.body.description}','${req.body.price})`,
     function (err, result) {
       if (err) {
         res.send(JSON.stringify({ success: false }));

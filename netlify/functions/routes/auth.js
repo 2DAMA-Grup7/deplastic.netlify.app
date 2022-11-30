@@ -6,7 +6,6 @@ function register(req, res) {
     `INSERT INTO Users (USER_ID, username, password, email, roles, token) VALUES (NULL, "${req.body.username}","${req.body.password}","${req.body.email}","${req.body.roles}", "")`,
     function (err, result) {
       if (err) {
-        
         res.send(JSON.stringify({ success: false }));
         res.end();
       } else {
@@ -84,4 +83,3 @@ function login(req, res) {
 }
 
 module.exports = { login, token, register };
-

@@ -29,7 +29,6 @@ function put(req, res) {
     description=${req.body.description} WHERE id_marker='${req.body.id_marker}'`,
     function (err, result) {
       if (err) {
-  
         res.send(JSON.stringify({ success: false }));
       } else {
         res.send(JSON.stringify({ success: true }));
@@ -45,8 +44,6 @@ function remove(req, res) {
     `DELETE FROM Markers WHERE id_marker = "${req.body.id_marker}" `,
     function (err) {
       if (err) {
-        
-
         res.send(JSON.stringify({ success: false }));
       } else {
         res.send(JSON.stringify({ success: true }));

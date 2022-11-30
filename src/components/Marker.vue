@@ -165,7 +165,6 @@ export default {
         });
     },
     closeDialog() {
-    
       this.inputMarker = {};
       this.dialog = false;
       window.location.reload();

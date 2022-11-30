@@ -25,7 +25,6 @@ router.get("/products", products.get);
 router.delete("/products", products.remove);
 router.put("/products", products.put);
 
-
 router.post("/markers", markers.post);
 router.get("/markers", markers.get);
 router.delete("/markers", markers.remove);

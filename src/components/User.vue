@@ -12,6 +12,7 @@
           <th class="text-left">EMAIL</th>
           <th class="text-left">ROLES</th>
           <th class="text-left">PASSWORD</th>
+          <th class="text-left">BALANCE</th>
           <th class="text-left">ACTIONS</th>
         </tr>
       </thead>
@@ -22,6 +23,8 @@
           <td class="text-left">{{ user.email }}</td>
           <td class="text-left">{{ user.roles }}</td>
           <td class="text-left">{{ user.password }}</td>
+          <td class="text-left">{{ user.PointTotal }}</td>
+
           <td class="text-left">
             <v-dialog v-model="dialog" width="600" persistent>
               <template v-slot:activator="{ props }">
@@ -50,6 +53,10 @@
                   ></v-select>
                   <v-text-field
                     v-model="inputUser.password"
+                    label="Password"
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="inputUser.PointTotal"
                     label="Password"
                   ></v-text-field>
                   <v-btn color="success" class="mr-4" @click="editUser">

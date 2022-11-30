@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-toolbar class="bg-deep-purple" flat>
-      <v-toolbar-title>{{logs}}</v-toolbar-title>
+      <v-toolbar-title>LOGS</v-toolbar-title>
       <p>{{logs}}</p>
       <thead>
         <th class="text-left">Logs</th>
@@ -10,7 +10,7 @@
       <tr v-for="item in logs" :key="item">
           </tr>
       <v-card>
-      {{this.logs}}
+      {{this.logs}} 
       </v-card>
       <v-card>
        {{logs}}
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import logtxt from "raw-loader!../../netlify/functions/routes/Log.txt"
+//import logtxt from "raw-loader!../../netlify/functions/routes/Log.txt"
 export default{
 
   data(){

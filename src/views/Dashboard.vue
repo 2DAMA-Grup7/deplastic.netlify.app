@@ -26,8 +26,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <v-row>
-        <v-sheet class="d-flex" color="transparent">
+        <v-sheet class="d-flex" color="transparent" width="500dp">
           <v-sheet class="ma-2 pa-2" color="transparent">
             <Marker />
           </v-sheet>
@@ -35,17 +34,9 @@
             <User />
           </v-sheet>
           <v-sheet class="ma-2 pa-2" color="transparent">
-      <FileReader/>
-          </v-sheet>
-        </v-sheet>
-      </v-row>
-      <v-row>
-        <v-sheet>
-          <v-sheet class="ma-2 pa-2" color="transparent">
             <Product />
           </v-sheet>
         </v-sheet>
-      </v-row>
     </v-main>
   </v-layout>
 </template>
@@ -55,7 +46,6 @@ import clearCookie from "../functions/clearcookie.js";
 import Marker from "../components/Marker.vue";
 import User from "../components/User.vue";
 import Product from "@/components/Product.vue";
-import FileReader from "@/components/FileReader.vue";
 
 
 </script>

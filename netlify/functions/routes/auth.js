@@ -6,7 +6,7 @@ function register(req, res) {
     `INSERT INTO Users (USER_ID, username, password, email, roles, token) VALUES (NULL, "${req.body.username}","${req.body.password}","${req.body.email}","${req.body.roles}", "")`,
     function (err, result) {
       if (err) {
-        logging(res);
+        
         res.send(JSON.stringify({ success: false }));
         res.end();
       } else {
@@ -26,7 +26,6 @@ function token(req, res) {
       `SELECT * FROM Users WHERE email = "${req.body.email}"`,
       (error, data) => {
         if (error) {
-          logging(res);
           throw error;
         } else {
           if (data.length > 0) {
@@ -58,7 +57,6 @@ function login(req, res) {
     `SELECT * FROM Users WHERE email = "${req.body.email}"`,
     (error, data) => {
       if (error) {
-        logging(res);
         throw error;
       } else {
         if (data.length > 0) {
@@ -86,15 +84,4 @@ function login(req, res) {
 }
 
 module.exports = { login, token, register };
-function logging(text) {
-  fs.writeFile(
-    "Log.txt",
-    text,
-    {
-      flag: "a",
-    },
-    (err) => {
-      if (err) console.log(err);
-    }
-  );
-}
+

@@ -1,5 +1,7 @@
 # default
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a576a2a6-5067-4c8a-bf79-f3c7db4d8e8a/deploy-status)](https://app.netlify.com/sites/deplastic/deploys)
+
 ## Project setup
 
 ```

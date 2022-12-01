@@ -1,5 +1,3 @@
-const e = require("express");
-
 function register(req, res) {
   var database = require("../lib/db");
   database.query(

@@ -111,6 +111,10 @@ export default {
         })
         .then((data) => {
           console.log(data);
+          let logsItems = localStorage.getItem("logs") || "{[]}";
+          logsItems = JSON.parse(logsItems);
+          logsItems.push({"logs":"Removed Marker"});
+          localStorage.setItem("logs",JSON.stringify(logsItems))
           window.location.reload();
         });
     },

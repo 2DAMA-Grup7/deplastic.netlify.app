@@ -57,7 +57,7 @@
                   ></v-text-field>
                   <v-text-field
                     v-model="inputUser.PointTotal"
-                    label="Password"
+                    label="Balance"
                   ></v-text-field>
                   <v-btn color="success" class="mr-4" @click="editUser">
                     Submit

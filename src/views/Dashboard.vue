@@ -45,5 +45,5 @@ import getCookie from "../functions/getcookie.js";
 import clearCookie from "../functions/clearcookie.js";
 import Marker from "../components/Marker.vue";
 import User from "../components/User.vue";
-import Product from "@/components/Product.vue";
+import Product from "../components/Product.vue";
 </script>

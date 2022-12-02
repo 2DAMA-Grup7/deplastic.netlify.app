@@ -19,8 +19,10 @@
         <tr v-for="product in listProducts" :key="product.id">
           <td class="text-left">{{ product.id }}</td>
           <td class="text-left">{{ product.nom }}</td>
-          <td class="text-left">{{ product.url }}</td>
-          <td class="text-left">{{ product.description }}</td>
+          <v-avatar>
+            <v-img :src="product.url"></v-img>
+          </v-avatar>
+          <td class="text-left" width="500">{{ product.description }}</td>
           <td class="text-left">{{ product.price }}</td>
 
           <td class="text-left">

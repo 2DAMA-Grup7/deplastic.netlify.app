@@ -8,6 +8,7 @@ function register(req, res) {
 }
 
 function token(req, res) {
+  var json_send = { auth: false };
   if (req.body.token != undefined) {
     database.query(
       `SELECT * FROM Users WHERE email = "${req.body.email}"`,
@@ -34,6 +35,7 @@ function token(req, res) {
 }
 
 function login(req, res) {
+  var json_send = { auth: false };
   database.query(
     `SELECT * FROM Users WHERE email = "${req.body.email}"`,
     (error, data) => {

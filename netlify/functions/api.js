@@ -4,7 +4,6 @@ const app = express();
 const router = express.Router();
 
 global.jwt = require("jsonwebtoken");
-global.json_send = { auth: false };
 global.database = require("./lib/db");
 global.send_error = require("./lib/send_error");
 

@@ -1,24 +1,14 @@
 function register(req, res) {
-  var database = require("../lib/db");
   database.query(
     `INSERT INTO Users (USER_ID, username, password, email, roles, token, PointTotal) VALUES (NULL, "${req.body.username}","${req.body.password}","${req.body.email}","${req.body.roles}", "", 0)`,
     function (err, result) {
-      if (err) {
-        res.send(JSON.stringify({ success: false }));
-        res.end();
-      } else {
-        res.send(JSON.stringify({ success: true }));
-        res.end();
-      }
+      send_error(res, err);
     }
   );
 }
 
 function token(req, res) {
-  var database = require("../lib/db");
-  let json_send = { auth: false };
   if (req.body.token != undefined) {
-    var database = require("../lib/db");
     database.query(
       `SELECT * FROM Users WHERE email = "${req.body.email}"`,
       (error, data) => {
@@ -44,12 +34,6 @@ function token(req, res) {
 }
 
 function login(req, res) {
-  var database = require("../lib/db");
-  var jwt = require("jsonwebtoken");
-  let json_send = { auth: false };
-
-  //console.log(JSON.stringify(req.body.email));
-
   database.query(
     `SELECT * FROM Users WHERE email = "${req.body.email}"`,
     (error, data) => {
@@ -58,7 +42,6 @@ function login(req, res) {
       } else {
         if (data.length > 0) {
           for (var count = 0; count < data.length; count++) {
-            console.log("dada4");
             if (data[count].password == req.body.password) {
               user = { id: data[count].USER_ID, email: data[count].email };
               let token = jwt.sign({ user }, process.env.my_secret_key);

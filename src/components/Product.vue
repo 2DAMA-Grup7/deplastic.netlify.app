@@ -9,7 +9,7 @@
         <tr>
           <th class="text-left">ID</th>
           <th class="text-left">NAME</th>
-          <th class="text-left">URL</th>
+          <th class="text-left">IMAGE</th>
           <th class="text-left">DESCRIPTION</th>
           <th class="text-left">PRICE</th>
           <th class="text-left">ACTIONS</th>
@@ -44,7 +44,7 @@
                   ></v-text-field>
                   <v-text-field
                     v-model="inputProduct.url"
-                    label="URL"
+                    label="Image"
                   ></v-text-field>
                   <v-text-field
                     v-model="inputProduct.description"

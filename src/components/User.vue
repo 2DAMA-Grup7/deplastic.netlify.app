@@ -158,7 +158,7 @@ export default {
           password: this.inputUser.password,
           email: this.inputUser.email,
           roles: this.inputUser.roles,
-          PointTotal: this.inputUser.roles,
+          PointTotal: this.inputUser.PointTotal,
         }),
         headers: { "Content-Type": "application/json" },
       })

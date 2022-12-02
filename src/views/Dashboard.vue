@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-navigation-drawer class="bg-deep-purple" theme="dark">
+    <v-navigation-drawer class="bg-green-darken-1" theme="dark">
       <v-list>
         <v-list-item
           prepend-icon="mdi-account"

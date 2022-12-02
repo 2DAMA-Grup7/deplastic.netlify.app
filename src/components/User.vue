@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-toolbar class="bg-deep-purple" flat>
+    <v-toolbar class="bg-green-darken-1" flat>
       <v-toolbar-title>User</v-toolbar-title>
       <v-btn variant="outlined" @click="dialog = true"> New Item </v-btn>
     </v-toolbar>
@@ -29,7 +29,7 @@
             <v-dialog v-model="dialog" width="600" persistent>
               <template v-slot:activator="{ props }">
                 <v-btn
-                  class="bg-deep-purple"
+                  class="bg-green-darken-1"
                   icon="mdi-pencil"
                   size="small"
                   v-bind="props"
@@ -73,7 +73,7 @@
               </v-card>
             </v-dialog>
             <v-btn
-              class="bg-deep-purple"
+              class="bg-green-darken-1"
               icon="mdi-trash-can-outline"
               size="small"
               @click="deleteUser(user.USER_ID)"

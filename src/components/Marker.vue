@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-toolbar class="bg-deep-purple" flat>
+    <v-toolbar class="bg-green-darken-1" flat>
       <v-toolbar-title>Marker</v-toolbar-title>
       <v-btn variant="outlined" @click="dialog = true"> New Item </v-btn>
     </v-toolbar>
@@ -26,7 +26,7 @@
             <v-dialog v-model="dialog" width="600" persistent>
               <template v-slot:activator="{ props }">
                 <v-btn
-                  class="bg-deep-purple"
+                  class="bg-green-darken-1"
                   icon="mdi-pencil"
                   size="small"
                   v-bind="props"
@@ -65,7 +65,7 @@
               </v-card>
             </v-dialog>
             <v-btn
-              class="bg-deep-purple"
+              class="bg-green-darken-1"
               icon="mdi-trash-can-outline"
               size="small"
               @click="deleteUser(marker.id_marker)"
@@ -113,8 +113,8 @@ export default {
           console.log(data);
           let logsItems = localStorage.getItem("logs") || "{}";
           logsItems = JSON.parse(logsItems);
-          logsItems.push({"logs":"Removed Marker"});
-          localStorage.setItem("logs",JSON.stringify(logsItems))
+          logsItems.push({ logs: "Removed Marker" });
+          localStorage.setItem("logs", JSON.stringify(logsItems));
           window.location.reload();
         });
     },
